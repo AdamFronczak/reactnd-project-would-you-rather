@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { Link } from 'react-router-dom';
 
-class Question extends Component {
+export class QuestionPreview extends Component {
     render() {
         return (
             <div>
@@ -12,9 +13,8 @@ class Question extends Component {
                     </div>
                     <div>
                         <h2>Would You Rather...</h2>
-                        <input name="answer" type="radio">{this.props.question.optionOne.text}</input>
-                        <input name="answer" type="radio">{this.props.question.optionTwo.text}</input>
-                        <input type="submit">Submit</input>
+                        <p>... {this.props.question.optionOne.substr(0, 20)} ...</p>
+                        <Link to={'/question/' + this.props.question.id}>View Poll</Link>
                     </div>
                 </div>
             </div>
@@ -23,7 +23,7 @@ class Question extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const question = state.questions[ownProps.params.questionId];
+    const question = state.questions[ownProps.questionId];
     const author = state.users[question.author];
 
     return {
@@ -36,4 +36,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question)
+export default connect(mapStateToProps, mapDispatchToProps)(QuestionPreview)

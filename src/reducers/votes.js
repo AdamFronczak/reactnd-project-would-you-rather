@@ -1,5 +1,4 @@
-import { RECEIVE_ALL_USERS } from "actions/users";
-import { RECEIVE_ALL_VOTES } from "actions/votes";
+import { RECEIVE_ALL_VOTES, SAVE_VOTE } from "actions/votes";
 
 export default function votes(state = {}, action) {
     switch (action.type) {
@@ -7,6 +6,9 @@ export default function votes(state = {}, action) {
     case RECEIVE_ALL_VOTES:
         return { ...state, ...action.votes };
 
+    case SAVE_VOTE:
+        return { ...state, ...action.vote };
+    
     default:
         return state;
     }

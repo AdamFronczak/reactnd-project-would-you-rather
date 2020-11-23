@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
 import logo from './../logo.svg';
 import './App.css';
+import MainScreen from './MainScreen';
 import SignIn from './SignIn';
 
 class App extends Component {
@@ -16,10 +17,17 @@ class App extends Component {
             <React.Fragment>
                 <LoadingBar loading={this.props.loading} />
                 <div className="App">
-                    <img src={logo} className="App-logo" alt="logo" />
-                    <div>
-                        <SignIn />
-                    </div>
+                    { this.props.currentUser.id
+                        ? 
+                        <MainScreen />
+                        :
+                        <React.Fragment>
+                            <img src={logo} className="App-logo" alt="logo" />
+                            <div>
+                                <SignIn />
+                            </div>       
+                        </React.Fragment>    
+                    }
                 </div>
             </React.Fragment>
         );
@@ -28,7 +36,8 @@ class App extends Component {
 
 function mapStateToProps(state) {
     return {
-        loading: state.loadingBar.default
+        loading: state.loadingBar.default,
+        currentUser: state.currentUser
     };
 }
 
