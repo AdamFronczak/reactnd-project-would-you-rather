@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
+import { withRouter } from 'react-router-dom';
 
 class Question extends Component {
     render() {
@@ -12,9 +13,15 @@ class Question extends Component {
                     </div>
                     <div>
                         <h2>Would You Rather...</h2>
-                        <input name="answer" type="radio">{this.props.question.optionOne.text}</input>
-                        <input name="answer" type="radio">{this.props.question.optionTwo.text}</input>
-                        <input type="submit">Submit</input>
+                        <div>
+                            <input id="answer1" name="answer" type="radio" />
+                            <label htmlFor="answer1">{this.props.question.optionOne.text}</label>
+                        </div>
+                        <div>
+                            <input id="answer2" name="answer" type="radio" />
+                            <label htmlFor="answer2">{this.props.question.optionTwo.text}</label>
+                        </div>
+                        <input type="submit" value="Submit" />
                     </div>
                 </div>
             </div>
@@ -23,7 +30,7 @@ class Question extends Component {
 }
 
 const mapStateToProps = (state, ownProps) => {
-    const question = state.questions[ownProps.params.questionId];
+    const question = state.questions[ownProps.match.params.questionId];
     const author = state.users[question.author];
 
     return {
@@ -36,4 +43,4 @@ const mapDispatchToProps = {
     
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Question)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Question))

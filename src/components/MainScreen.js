@@ -1,8 +1,11 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import LeaderBoard from './LeaderBoard';
 import Menu from './Menu';
 import NewQuestion from './NewQuestion';
+import Question from './Question';
+import QuestionList from './QuestionList';
 
 class MainScreen extends Component {
     render() {
@@ -12,16 +15,16 @@ class MainScreen extends Component {
 
                 <Switch>
                     <Route path="/" exact>
-
+                        <QuestionList />
                     </Route>
-                    <Route path="/newQuestion">
+                    <Route path="/add">
                         <NewQuestion />
                     </Route>
-                    <Route path="/leaderBoard">
-                        
+                    <Route path="/leaderboard">
+                        <LeaderBoard />
                     </Route>
-                    <Route path="/question/:questionId">
-                        
+                    <Route path="/questions/:questionId">
+                        <Question questionId={1} />
                     </Route>
                 </Switch>
             </Router>

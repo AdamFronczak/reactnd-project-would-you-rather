@@ -10,8 +10,8 @@ class Menu extends Component {
             <nav>
                 <div>
                     <Link to="/">Home</Link>
-                    <Link to="/newQuestion">New Question</Link>
-                    <Link to="/leaderBoard">Leader Board</Link>
+                    <Link to="/add">New Question</Link>
+                    <Link to="/leaderboard">Leader Board</Link>
                 </div>
                 <div>
                     <LoggedInUser />

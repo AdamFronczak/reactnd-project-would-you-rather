@@ -1,3 +1,4 @@
+import { getAllQuestions } from 'actions/questions';
 import { getAllUsers } from 'actions/users';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
@@ -9,7 +10,8 @@ import SignIn from './SignIn';
 
 class App extends Component {
     componentDidMount() {
-        this.props.getUsers();
+        this.props.getAllUsers();
+        this.props.getAllQuestions();
     }
 
     render() {
@@ -43,7 +45,8 @@ function mapStateToProps(state) {
 
 function mapDispatchToProps(dispatch) {
   return {
-        getUsers: () => dispatch(getAllUsers())
+        getAllUsers: () => dispatch(getAllUsers()),
+        getAllQuestions: () => dispatch(getAllQuestions())
     };
 }
 
