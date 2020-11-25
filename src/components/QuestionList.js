@@ -16,8 +16,12 @@ class QuestionList extends Component {
             <div>
                 <div>
                     <ul>
-                        <li key="unanswered" onClick={() => this.setAnswered(false)}>Unanswered Questions</li>
-                        <li key="answered" onClick={() => this.setAnswered(true)}>Answered Questions</li>
+                        <li key="unanswered" 
+                            className={this.state.isAnswered ? "" : "highlight"} 
+                            onClick={() => this.setAnswered(false)}>Unanswered Questions</li>
+                        <li key="answered" 
+                            className={this.state.isAnswered ? "highlight" : ""} 
+                            onClick={() => this.setAnswered(true)}>Answered Questions</li>
                     </ul>
                 </div>
                 {

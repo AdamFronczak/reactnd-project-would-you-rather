@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 class QuestionPreview extends Component {
     render() {
         return (
-            <div>
+            <div className="question-box">
                 <h3>{this.props.author.name} asks:</h3>
                 <div>
                     <div>

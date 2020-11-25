@@ -6,14 +6,14 @@ class LoggedInUser extends Component {
         return (
             <span>
                 Hello, {this.props.currentUser.name}
-                <img src={this.props.currentUser.avatarURL} width={32} height={32} />
+                <img src={this.props.currentUser.avatarURL} alt="" width={32} height={32} />
             </span>
         )
     }
 }
 
 const mapStateToProps = (state) => ({
-    currentUser: state.currentUser
+    currentUser: state.users[state.currentUser.id]
 })
 
 const mapDispatchToProps = {

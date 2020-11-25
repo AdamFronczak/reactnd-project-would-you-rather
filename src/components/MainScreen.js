@@ -6,6 +6,7 @@ import Menu from './Menu';
 import NewQuestion from './NewQuestion';
 import Question from './Question';
 import QuestionList from './QuestionList';
+import Results from './Results';
 
 class MainScreen extends Component {
     render() {
@@ -24,7 +25,10 @@ class MainScreen extends Component {
                         <LeaderBoard />
                     </Route>
                     <Route path="/questions/:questionId">
-                        <Question questionId={1} />
+                        <Question />
+                    </Route>
+                    <Route path="/results/:questionId">
+                        <Results />
                     </Route>
                 </Switch>
             </Router>
