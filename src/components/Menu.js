@@ -1,10 +1,15 @@
 import { logout } from 'actions/currentUser'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { Link } from 'react-router-dom'
+import { Link, withRouter } from 'react-router-dom'
 import LoggedInUser from './LoggedInUser'
 
 class Menu extends Component {
+    logout = () => {
+        this.props.logout();
+        this.props.history.push('/');
+    }
+
     render() {
         return (
             <nav>
@@ -15,7 +20,7 @@ class Menu extends Component {
                 </div>
                 <div>
                     <LoggedInUser />
-                    <button onClick={this.props.logout}>Logout</button>
+                    <button onClick={this.logout}>Logout</button>
                 </div>
             </nav>
         )
@@ -23,7 +28,7 @@ class Menu extends Component {
 }
 
 const mapStateToProps = (state) => ({
-    
+
 })
 
 function mapDispatchToProps(dispatch) {
@@ -32,4 +37,4 @@ function mapDispatchToProps(dispatch) {
     };
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Menu)
+export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu))

@@ -34,7 +34,7 @@ export function saveQuestion(optionOneText, optionTwoText, author) {
         dispatch(saveQuestionAction(question));
 
         return _saveQuestion(question)
-            .then(e => getAllQuestions())
+            .then(e => dispatch(getAllQuestions()))
             .catch(e => {
                 alert('There was an error while saving the vote.');
             })

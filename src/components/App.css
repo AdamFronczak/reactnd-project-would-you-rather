@@ -88,6 +88,28 @@ nav > div {
   margin: 5px 100px;
 }
 
+.option-input {
+  width: 300px;
+}
+
+.left {
+  float: left;
+}
+
+.leaderboard-item {
+  width: 600px;
+  margin: 10px auto;
+  border: black solid 1px;
+}
+
+.leaderboard-item p {
+  margin: 10px;
+}
+
+.leaderboard-item img {
+  margin: 10px;
+}
+
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

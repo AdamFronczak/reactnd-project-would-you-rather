@@ -9,8 +9,10 @@ class Question extends Component {
     }
 
     submitAnswer = () => {
-        this.props.saveVote(this.props.currentUserId, this.props.question.id, this.state.answer);
-        this.props.history.push('/results/' + this.props.question.id);
+        if (this.state.answer) {
+            this.props.saveVote(this.props.currentUserId, this.props.question.id, this.state.answer);
+            this.props.history.push('/results/' + this.props.question.id);
+        }
     }
 
     render() {
@@ -35,7 +37,7 @@ class Question extends Component {
                             <input id="answer2" name="answer" type="radio" onChange={() => this.setState({answer: 'optionTwo'})} />
                             <label htmlFor="answer2">{this.props.question.optionTwo.text}</label>
                         </div>
-                        <input type="submit" value="Submit" disabled={this.state.answerId === null} onClick={this.submitAnswer} />
+                        <input type="submit" value="Submit" onClick={this.submitAnswer} />
                     </div>
                 </div>
             </div>
@@ -52,8 +54,7 @@ const mapStateToProps = (state, ownProps) => {
         question,
         author,
         currentUserId: state.currentUser.id,
-        isAnswered: isAnswered,
-        history: ownProps.history
+        isAnswered: isAnswered
     };
 }
 

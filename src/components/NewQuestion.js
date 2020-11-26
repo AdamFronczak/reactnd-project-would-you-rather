@@ -24,22 +24,23 @@ class NewQuestion extends Component {
 
     render() {
         return (
-            <div>
+            <div className="question-box">
                 <h2>Create New Question</h2>
                 <p>Complete the question</p>
                 <h3>Would You Rather...</h3>
-                <input type="text" onChange={this.setOptionOne} />
+                <div>
+                <input type="text" onChange={this.setOptionOne} className="option-input" />
                 <div className="separator">OR</div>
-                <input type="text" onChange={this.setOptionTwo} />
+                <input type="text" onChange={this.setOptionTwo} className="option-input" />
+                </div>
                 <input type="submit" onClick={this.submitQuestion} />
             </div>
         )
     }
 }
 
-const mapStateToProps = (state, ownProps) => ({
-    currentUserId: state.currentUser.id,
-    history: ownProps.history
+const mapStateToProps = (state) => ({
+    currentUserId: state.currentUser.id
 })
 
 function mapDispatchToProps(dispatch) {

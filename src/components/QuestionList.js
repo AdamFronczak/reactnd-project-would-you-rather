@@ -27,7 +27,7 @@ class QuestionList extends Component {
                 {
                     (this.state.isAnswered
                         ? this.props.answeredQuestions
-                        : this.props.unansweredQuestions).map(q => (<QuestionPreview questionId={q.id} />))
+                        : this.props.unansweredQuestions).map(q => (<QuestionPreview questionId={q.id} key={q.id} />))
                 }
             </div>
         )
