@@ -27,7 +27,9 @@ class QuestionList extends Component {
                 {
                     (this.state.isAnswered
                         ? this.props.answeredQuestions
-                        : this.props.unansweredQuestions).map(q => (<QuestionPreview questionId={q.id} key={q.id} />))
+                        : this.props.unansweredQuestions)
+                        .sort((a, b) => b.timestamp - a.timestamp)
+                        .map(q => (<QuestionPreview questionId={q.id} key={q.id} />))
                 }
             </div>
         )
