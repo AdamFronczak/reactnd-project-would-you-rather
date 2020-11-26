@@ -4,6 +4,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import LeaderBoard from './LeaderBoard';
 import Menu from './Menu';
 import NewQuestion from './NewQuestion';
+import NotFound from './NotFound';
 import Question from './Question';
 import QuestionList from './QuestionList';
 import Results from './Results';
@@ -29,6 +30,9 @@ class MainScreen extends Component {
                     </Route>
                     <Route path="/results/:questionId">
                         <Results />
+                    </Route>
+                    <Route>
+                        <NotFound />
                     </Route>
                 </Switch>
             </Router>

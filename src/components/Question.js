@@ -20,6 +20,11 @@ class Question extends Component {
             this.props.history.push('/results/' + this.props.question.id);
         }
 
+        if (this.props.question === undefined) {
+            this.props.history.push('/404');
+            return <div></div>;
+        }
+
         return (
             <div className="question-box">
                 <h3>{this.props.author.name} asks:</h3>
@@ -47,8 +52,8 @@ class Question extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const question = state.questions[ownProps.match.params.questionId];
-    const author = state.users[question.author];
-    const isAnswered = state.users[state.currentUser.id].answers[question.id] !== undefined;
+    const author = question ? state.users[question.author] : {};
+    const isAnswered = question ? state.users[state.currentUser.id].answers[question.id] !== undefined : false;
 
     return {
         question,

@@ -5,6 +5,11 @@ import SingleResult from './SingleResult'
 
 class Results extends Component {
     render() {
+        if (this.props.question === undefined) {
+            this.props.history.push('/404');
+            return <div></div>;
+        }
+
         return (
             <div className="question-box">
                 <h3>Asked by {this.props.author.name}</h3>
@@ -31,7 +36,7 @@ class Results extends Component {
 
 const mapStateToProps = (state, ownProps) => {
     const question = state.questions[ownProps.match.params.questionId];
-    const author = state.users[question.author];
+    const author = question ? state.users[question.author] : {};
     const currentUser = state.currentUser;
 
     return {
