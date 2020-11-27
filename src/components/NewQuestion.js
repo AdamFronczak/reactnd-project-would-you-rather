@@ -18,8 +18,10 @@ class NewQuestion extends Component {
     }
 
     submitQuestion = () => {
-        this.props.saveQuestion(this.state.optionOne, this.state.optionTwo, this.props.currentUserId);
-        this.props.history.push('/');
+        if (this.state.optionOne && this.state.optionTwo && this.state.optionOne !== this.state.optionTwo) {
+            this.props.saveQuestion(this.state.optionOne, this.state.optionTwo, this.props.currentUserId);
+            this.props.history.push('/');
+        }
     }
 
     render() {

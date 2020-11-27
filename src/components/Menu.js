@@ -1,15 +1,9 @@
-import { logout } from 'actions/currentUser'
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
 import { Link, withRouter } from 'react-router-dom'
 import LoggedInUser from './LoggedInUser'
 
 class Menu extends Component {
-    logout = () => {
-        this.props.logout();
-        this.props.history.push('/');
-    }
-
     render() {
         return (
             <nav>
@@ -20,7 +14,6 @@ class Menu extends Component {
                 </div>
                 <div>
                     <LoggedInUser />
-                    <button onClick={this.logout}>Logout</button>
                 </div>
             </nav>
         )
@@ -32,9 +25,7 @@ const mapStateToProps = (state) => ({
 })
 
 function mapDispatchToProps(dispatch) {
-    return {
-        logout: () => dispatch(logout())
-    };
+    return {};
 }
 
 export default withRouter(connect(mapStateToProps, mapDispatchToProps)(Menu))

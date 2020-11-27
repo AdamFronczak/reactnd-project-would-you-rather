@@ -3,9 +3,11 @@ import { getAllUsers } from 'actions/users';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { LoadingBar } from 'react-redux-loading';
+import { BrowserRouter as Router } from 'react-router-dom';
 import logo from './../logo.svg';
 import './App.css';
 import MainScreen from './MainScreen';
+import Menu from './Menu';
 import SignIn from './SignIn';
 
 class App extends Component {
@@ -16,9 +18,10 @@ class App extends Component {
 
     render() {
         return (
-            <React.Fragment>
+            <Router>
                 <LoadingBar loading={this.props.loading} />
                 <div className="App">
+                    <Menu />
                     { this.props.currentUser.id
                         ? 
                         <MainScreen />
@@ -31,7 +34,7 @@ class App extends Component {
                         </React.Fragment>    
                     }
                 </div>
-            </React.Fragment>
+            </Router>
         );
     }
 }
