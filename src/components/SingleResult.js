@@ -2,10 +2,6 @@ import React, { Component } from 'react'
 
 export default class SingleResult extends Component {
     render() {
-        if (!this.props.question) {
-            this.props.history.push('/404');
-        }
-
         return (
             <div className="vote">
                 <h4>{this.props.question}</h4>

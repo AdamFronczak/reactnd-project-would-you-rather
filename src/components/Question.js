@@ -1,7 +1,7 @@
 import { saveVote } from 'actions/votes';
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom';
+import { Redirect, withRouter } from 'react-router-dom';
 
 class Question extends Component {
     state = {
@@ -17,12 +17,11 @@ class Question extends Component {
 
     render() {
         if (this.props.isAnswered) {
-            this.props.history.push('/results/' + this.props.question.id);
+            return <Redirect to={"/results/" + this.props.question.id}></Redirect>
         }
 
         if (this.props.question === undefined) {
-            this.props.history.push('/404');
-            return <div></div>;
+            return <Redirect to={"/404"}></Redirect>
         }
 
         return (

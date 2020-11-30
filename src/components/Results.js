@@ -1,13 +1,12 @@
 import React, { Component } from 'react'
 import { connect } from 'react-redux'
-import { withRouter } from 'react-router-dom'
+import { Redirect, withRouter } from 'react-router-dom'
 import SingleResult from './SingleResult'
 
 class Results extends Component {
     render() {
         if (this.props.question === undefined) {
-            this.props.history.push('/404');
-            return <div></div>;
+            return <Redirect to={"/404"}></Redirect>
         }
 
         return (
